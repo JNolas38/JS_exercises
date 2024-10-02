@@ -157,6 +157,9 @@ Navbar
 ===============
 */
 nav {
+  z-index: 10;
+  position: fixed;
+  width: 100%;
   background: var(--clr-white);
   box-shadow: var(--light-shadow);
 }
@@ -204,7 +207,7 @@ nav {
   transition: var(--transition);
 }
 .show-links { /* by toggling this class we can change the height of links and have them show and disappear*/
-  height: 10rem;
+  height: 13rem;
 }
 @media screen and (min-width: 800px) {
   .nav-center {
@@ -245,3 +248,15 @@ nav {
     color: var(--clr-primary-7);
   }
 }
+
+ .bg {
+  min-height: 100vh;
+  background: url("./Links_Awakening.jpg") center/cover no-repeat;
+  background-attachment: fixed;
+  display: grid;
+  place-items: center;
+  position: relative;
+}
+
+
+ 
