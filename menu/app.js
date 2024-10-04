@@ -71,24 +71,69 @@ const menu = [
       img: "./images/item-9.jpeg",
       desc: `skateboard fam synth authentic semiotics. Live-edge lyft af, edison bulb yuccie crucifix microdosing.`,
     },
-  ];
+    {
+      id: 10,
+      title: "Steak Dinner",
+      category: "dinner",
+      price: 34.99,
+      img: "./images/item-10.jpeg",
+      desc: `skateboard fam synth authentic semiotics. Live-edge lyft af, edison bulb yuccie crucifix microdosing.`,
+    },
+];
 
-  const sectionCenter = document.querySelector('.section-center');
+const sectionCenter = document.querySelector('.section-center');
+const container = document.querySelector('.btn-container');
 
-  window.addEventListener('DOMContentLoaded', function(){
-    let displayMenu = menu.map(function(item){
+window.addEventListener('DOMContentLoaded', function(){ //loads all items on page start
+  dislplayMenuItems(menu);
+  dislplayMenuBtns();
+});
 
-        return(`<article class="menu-item">
-                    <img src=${item.img} class="photo" alt=${item.title} />
-                    <div class="item-info">
-                        <header>
-                            <h4>${item.title}</h4>
-                            <h4 class="price">${item.price}€</h4>
-                        </header>
-                        <p class="item-text">${item.desc}</p>
-                    </div>
-                 </article>`);
-    });
-    displayMenu = displayMenu.join('');
-    sectionCenter.innerHTML = displayMenu;
+function dislplayMenuItems(menuItems){
+  let displayMenu = menuItems.map(function(item){   //breakedown the array that was received as a parameter
+
+    return(`<article class="menu-item">
+                <img src=${item.img} class="photo" alt=${item.title} />
+                <div class="item-info">
+                    <header>
+                        <h4>${item.title}</h4>
+                        <h4 class="price">${item.price}€</h4>
+                    </header>
+                    <p class="item-text">${item.desc}</p>
+                </div>
+            </article>`);
   });
+  displayMenu = displayMenu.join('');           //properly save the html code as a string to be injected
+  sectionCenter.innerHTML = displayMenu;        //inject the new html code
+};
+
+function dislplayMenuBtns(){
+  const categories = menu.reduce(function(values, item){  //creates an array with all categories
+    if(!values.includes(item.category)){                  //but only saves each once
+      values.push(item.category);
+    }
+    return values
+  },['all']);
+  const categoryBtns = categories.map(function(category){   //using the categories array we dynamically create the html for the buttons
+    return `<button class="filter-btn" type="button" data-id=${category}>${category}</button>`;
+  }).join('');
+  container.innerHTML = categoryBtns;
+  
+  const filterBtns = document.querySelectorAll('.filter-btn') //only once the buttons have been created can we select them to add our even listener
+  filterBtns.forEach(function(btn){
+    btn.addEventListener('click', function(e){
+      const category = e.currentTarget.dataset.id;  //saves the buttons category in a seperate constant
+      const menuCategory = menu.filter(function(menuItem){
+        if (menuItem.category === category) {       //creates an array menuItem from the original menu array that includes
+          return menuItem;                          //only the items with the same category as the button pressed 
+        };
+      });
+      if (category === 'all'){                      //if the button pressed had the all category we desplay the entire menu array
+        dislplayMenuItems(menu);
+      }
+      else{
+        dislplayMenuItems(menuCategory);            //else we display the filtered menuItem array
+      };
+    });
+  });
+};
