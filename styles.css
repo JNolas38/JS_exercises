@@ -179,7 +179,6 @@ nav {
 }
 .nav-toggle:hover {
   color: var(--clr-primary-1);
-  transform: rotate(90deg);
 }
 .logo {
   height: 40px;
@@ -201,16 +200,15 @@ nav {
 .social-icons {
   display: none;
 }
-.links {  /* This hides the links be default by setting height to 0 and overflow to hidden*/
+.links-container {
   height: 0;
   overflow: hidden;
   transition: var(--transition);
 }
-.show-links { /* by toggling this class we can change the height of links and have them show and disappear*/
-  height: 13rem;
-}
+
 @media screen and (min-width: 800px) {
   .nav-center {
+    width: 90vw;
     max-width: 1170px;
     margin: 0 auto;
     display: flex;
@@ -236,6 +234,9 @@ nav {
     padding: 0;
     background: transparent;
   }
+  .links-container {
+    height: auto !important;
+  }
   .social-icons {
     display: flex;
   }
@@ -259,4 +260,22 @@ nav {
 }
 
 
- 
+/* Preloader */
+.preloader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--clr-white);
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  visibility: visible;
+  z-index: 999;
+  transition: var(--transition);
+}
+.hide-preloader {
+  z-index: -999;
+  visibility: hidden;
+} 
