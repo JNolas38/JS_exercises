@@ -130,21 +130,6 @@ p {
 }
 /*  global classes */
 
-/* section */
-.section {
-  padding: 5rem 0;
-}
-
-.section-center {
-  width: 90vw;
-  margin: 0 auto;
-  max-width: 1170px;
-}
-@media screen and (min-width: 992px) {
-  .section-center {
-    width: 95vw;
-  }
-}
 main {
   min-height: 100vh;
   display: grid;
@@ -257,6 +242,38 @@ nav {
   display: grid;
   place-items: center;
   position: relative;
+}
+
+/* section */
+
+footer {
+  z-index: 10;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background: var(--clr-grey-1);
+  padding: 2rem 1rem;
+}
+footer p {
+  color: var(--clr-white);
+  text-align: center;
+  letter-spacing: var(--spacing);
+  margin-bottom: 0;
+}
+
+.section {
+  padding-bottom: 2rem;
+}
+
+.section-center {
+  width: 90vw;
+  margin: 0 auto;
+  max-width: 1170px;
+}
+@media screen and (min-width: 992px) {
+  .section-center {
+    width: 95vw;
+  }
 }
 
 

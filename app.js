@@ -64,3 +64,8 @@ navToggle.addEventListener('click', function(){
         linksContainer.style.height = 0;
     }
 });
+
+/* Date */
+const date = document.getElementById('date');
+
+date.innerHTML = new Date().getFullYear();
