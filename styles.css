@@ -235,16 +235,69 @@ nav {
   }
 }
 
- .bg {
-  min-height: 100vh;
-  background: url("./Links_Awakening.jpg") center/cover no-repeat;
-  background-attachment: fixed;
+/* Menu */
+.menu {
+  background-color: transparent /* rgba(0, 0, 0, 0.5) */;
+  z-index: 5;
+  padding: 7rem 0;
+}
+.title {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+.underline {
+    width: 5rem;
+    height: 0.25rem;
+    background-color: goldenrod;
+    margin-left: auto;
+    margin-right: auto;
+}
+.section-center {
+  width: 90vw;
+  margin: 0 auto;
+  max-width: 1170px;
   display: grid;
-  place-items: center;
-  position: relative;
+  gap: 3rem 2rem;
+  justify-items: center;
+}
+.menu-item {
+  display: grid;
+  gap: 1rem 2rem;
+  max-width: 25rem;
+}
+.item-info header {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 0.5px dotted var(--clr-grey-5);
+}
+.item-info h4 {
+  margin-bottom: 0.5rem;
+}
+.price {
+  color: var(--clr-gold);
+}
+.item-text {
+  margin-bottom: 0;
+  padding-top: 1rem;
 }
 
-/* section */
+/* Background */
+
+.bg {
+  min-height: 100vh;
+  z-index: -1;
+  background: url("./Links_Awakening.jpg") center/cover no-repeat;
+  background-attachment: fixed;
+  position: absolute;
+  display: grid;
+  place-items: center;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* footer */
 
 footer {
   z-index: 10;
@@ -261,17 +314,17 @@ footer p {
   margin-bottom: 0;
 }
 
-.section {
+.foot {
   padding-bottom: 2rem;
 }
 
-.section-center {
+.foot-center {
   width: 90vw;
   margin: 0 auto;
   max-width: 1170px;
 }
 @media screen and (min-width: 992px) {
-  .section-center {
+  .foot-center {
     width: 95vw;
   }
 }
