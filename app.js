@@ -28,6 +28,18 @@ const linkList = [
         title: "Sidebar",
         path: "sidebar/index.html",
         desc: "A page with a sidebar that is hidden depending on the windows size"
+    },
+    {
+        id: 6,
+        title: "Modal",
+        path: "modal/index.html",
+        desc: "A page with a modal window that appears upon clicking a button"
+    },
+    {
+        id: 7,
+        title: "FAQ",
+        path: "FAQ/index.html",
+        desc: "A FAQ page with multiple divs that can be opened but never more than one at once"
     }
 ];
 
@@ -38,20 +50,35 @@ window.addEventListener('load', function(){
     preloader.classList.add('hide-preloader');
 })
 
+window.addEventListener('DOMContentLoaded', function(){ /* Load the apropriate functions */
+    displayLink(linkList);
+    displayItems(linkList);
+});
+
 /* Links */
 const links = document.querySelector('.links');
 
-window.addEventListener('DOMContentLoaded', function(){
-    let displayLinks = linkList.map(function(item){
-        return (`<li>
-                    <a href=${item.path}>${item.title}</a>
-                 </li>`);
+/*function displayLink(linkList){
+    let strLinks = linkList.map(function(item){
+    return (`<li>
+                <a href=${item.path}>${item.title}</a>
+            </li>`);
     });
-    displayLinks = displayLinks.join('');
-    links.innerHTML = displayLinks;
+    strLinks = strLinks.join('');
+    links.innerHTML = strLinks;
+}; */
 
-    displayItems(linkList);
-});
+function displayLink(linkList){
+    let strLinks = [];
+    for (let i = 0; i < linkList.length; i++){
+        if (linkList[i].id <= 5){
+            let item = linkList[i];
+            strLinks.push(`<li><a href=${item.path}>${item.title}</a></li>`); 
+        }
+    };
+    strLinks = strLinks.join('');
+    links.innerHTML = strLinks;
+};
 
 
 /* Navbar */
@@ -75,7 +102,7 @@ navToggle.addEventListener('click', function(){
 /* Menu */
 const sectionCenter = document.querySelector('.section-center');
 function displayItems(menuItems){
-    let displayMenu = menuItems.map(function(item){
+    let strItems = menuItems.map(function(item){
         return(`<article class="menu-item">
             <div class="item-info">
                 <header>
@@ -88,10 +115,28 @@ function displayItems(menuItems){
             </div>
         </article>`);
     });
-    displayMenu = displayMenu.join('');
-    sectionCenter.innerHTML = displayMenu;
+    strItems = strItems.join('');
+    sectionCenter.innerHTML = strItems;
 };
 
+/* Top button */
+const topLink = document.querySelector('.top-link');
+window.addEventListener('scroll', function(){
+    const scrollHeight = window.scrollY;
+    if (scrollHeight > 250){
+        topLink.classList.add('show-link');
+    }
+    else {
+        topLink.classList.remove('show-link');
+    }
+});
+topLink.addEventListener('click', function(e){
+    e.preventDefault();
+    window.scrollTo({
+        letf:0,
+        top: 0,
+    });
+});
 
 /* Date */
 const date = document.getElementById('date');
