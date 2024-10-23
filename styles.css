@@ -146,7 +146,7 @@ nav {
   position: fixed;
   width: 100%;
   background: var(--clr-white);
-  box-shadow: var(--light-shadow);
+  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
 }
 .nav-header {
   display: flex;
@@ -255,15 +255,21 @@ nav {
 .section-center {
   width: 90vw;
   margin: 0 auto;
-  max-width: 1170px;
+  max-width: 900px;
   display: grid;
   gap: 3rem 2rem;
   justify-items: center;
 }
 .menu-item {
+  background-color: white;
   display: grid;
   gap: 1rem 2rem;
-  max-width: 25rem;
+  max-width: 210rem;
+  padding: 1rem;
+  padding-right: 0rem;
+  border-radius: 10px;
+  border: 2px solid black;
+  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
 }
 .item-info header {
   display: flex;
@@ -279,7 +285,29 @@ nav {
 .item-text {
   margin-bottom: 0;
   padding-top: 1rem;
+  text-align: justify;
 }
+
+@media screen and (min-width: 768px) {
+  .menu-item {
+    grid-template-columns: 225px 1fr;
+    gap: 0 1.25rem;
+    max-width: 40rem;
+  }
+  .photo {
+    height: 175px;
+  }
+}
+@media screen and (min-width: 1200px) {
+  .section-center {
+    width: 95vw;
+    grid-template-columns: 1fr 1fr;
+  }
+  .photo {
+    height: 150px;
+  }
+}
+
 
 /* Background */
 
@@ -288,7 +316,7 @@ nav {
   z-index: -1;
   background: url("./Links_Awakening.jpg") center/cover no-repeat;
   background-attachment: fixed;
-  position: absolute;
+  position: fixed;
   display: grid;
   place-items: center;
   top: 0;
@@ -300,8 +328,7 @@ nav {
 /* footer */
 
 footer {
-  z-index: 10;
-  position: fixed;
+  z-index: -1;
   bottom: 0;
   width: 100%;
   background: var(--clr-grey-1);
