@@ -40,6 +40,42 @@ const linkList = [
         title: "FAQ",
         path: "FAQ/index.html",
         desc: "A FAQ page with multiple divs that can be opened but never more than one at once"
+    },
+    {
+        id: 8,
+        title: "Menu",
+        path: "menu/index.html",
+        desc: "A page with a resturaunt menu that can be filtered"
+    },
+    {
+        id: 9,
+        title: "Video",
+        path: "video/index.html",
+        desc: "A page with a video background that can be paused"
+    },
+    {
+        id: 10,
+        title: "Scroll",
+        path: "Scoll/index.html",
+        desc: "A page with a navbar that can be used to scroll through it"
+    },
+    {
+        id: 11,
+        title: "Tabs",
+        path: "tabs/index.html",
+        desc: "A page with multiple tabs that display different content"
+    },
+    {
+        id: 12,
+        title: "Countdown",
+        path: "countdown/index.html",
+        desc: "A page with a live countdown"
+    },
+    {
+        id: 13,
+        title: "Lorem Ipsum",
+        path: "ipsum/index.html",
+        desc: "A page that can generate multiple random paragraphs"
     }
 ];
 
@@ -70,11 +106,9 @@ const links = document.querySelector('.links');
 
 function displayLink(linkList){
     let strLinks = [];
-    for (let i = 0; i < linkList.length; i++){
-        if (linkList[i].id <= 5){
-            let item = linkList[i];
-            strLinks.push(`<li><a href=${item.path}>${item.title}</a></li>`); 
-        }
+    for (let i = 0; i < 5; i++){
+        let item = linkList[i];
+        strLinks.push(`<li><a href=${item.path}>${item.title}</a></li>`); 
     };
     strLinks = strLinks.join('');
     links.innerHTML = strLinks;
@@ -88,8 +122,6 @@ const linksContainer = document.querySelector('.links-container');
 navToggle.addEventListener('click', function(){
     const containerHeight = linksContainer.getBoundingClientRect().height;
     const linksHeight = links.getBoundingClientRect().height;
-
-    console.log(linksHeight);
 
     if (containerHeight === 0){
         linksContainer.style.height = `${linksHeight}px`;
@@ -131,7 +163,6 @@ window.addEventListener('scroll', function(){
     }
 });
 topLink.addEventListener('click', function(e){
-    e.preventDefault();
     window.scrollTo({
         letf:0,
         top: 0,

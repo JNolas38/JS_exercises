@@ -268,7 +268,6 @@ nav {
   gap: 1rem 2rem;
   max-width: 210rem;
   padding: 1rem;
-  padding-right: 0rem;
   border-radius: 10px;
   border: 2px solid black;
   box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
@@ -292,6 +291,7 @@ nav {
 
 @media screen and (min-width: 768px) {
   .menu-item {
+    padding-right: 0rem;
     grid-template-columns: 225px 1fr;
     gap: 0 1.25rem;
     max-width: 40rem;
@@ -311,7 +311,7 @@ nav {
 }
 
 
-/* Background */
+/* =========================================================== Background =========================================================== */
 
 .bg {
   min-height: 100vh;
